@@ -68,7 +68,7 @@ function App() {
 
 function Header() {
 return (
-  <header>
+  <header className='header'>
   <h1>Daifuku Mochi Shop</h1>
 
   </header>
@@ -101,32 +101,45 @@ return (
 
 function Mochi({mochiObj}) {
 return (
-  <li>
+  <li className='mochi-container'>
 <img src={mochiObj.image} alt={mochiObj.name} />
-<div>
+<div className='mochi-details-box'>
   <h3>{mochiObj.name}</h3>
   <p>{mochiObj.ingredients}</p>
-  <p>{mochiObj.inStock} mochi</p>
-  <select>
-    <option>1</option>
-    <option>2</option>
-    <option>3</option>
-    <option>4</option>
-    <option>5</option>
-    <option>6</option>
-    <option>7</option>
-    <option>8</option>
-    <option>9</option>
-    <option>10</option>
-  </select>
-  <p>{mochiObj.soldOut ? 'SOLD OUT' : `$${mochiObj.price} per one`}</p>
+  <p>Produce: {mochiObj.inStock} mochi</p>
+  <p id='mochi-price'>{mochiObj.soldOut ? 'SOLD OUT' : `$${mochiObj.price} per one`}</p>
 </div>
   </li>
 )
 }
 
 function Footer() {
+  const hour = new Date().getHours();
+  const openHour = 10;
+  const closeHour = 20;
+  const isOpen = hour >= openHour && hour <= closeHour;
 
+
+  return (
+    <footer>
+    {isOpen ? (
+      <Order openHour={openHour} closeHour={closeHour} />
+    ) : <p>We're happy to welcome you  between {openHour}:00 and {closeHour}:00 </p>}
+
+      
+    </footer>
+
+
+  )
+}
+
+function Order({closeHour, openHour}) {
+return (
+  <div>
+  <p>We're are open from {openHour}:00 to {closeHour}:00. Come visit us or order online.</p>
+  <button>Order</button>
+  </div>
+)
 }
 
 
