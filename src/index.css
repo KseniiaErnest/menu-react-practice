@@ -64,8 +64,9 @@ body {
   
 }
 
-.mochi-container > img {
-  width: 11rem;
+.mochi-container  img {
+  min-width: 11rem;
+  max-width: 11rem;
   height: 11rem;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   border-radius: 3px;
@@ -116,4 +117,47 @@ color: #8888;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   color: #1b4949 ;
   cursor: pointer;
+}
+
+@media all and (max-width: 56.25em) {
+
+  .menu-container > p {
+    width: 75%;
+  }
+
+  .mochi-container  img {
+    min-width: 9rem;
+    max-width: 9rem;
+    height: 9rem;
+    align-self: center;
+
+  }
+}
+
+@media all and (max-width: 44.25em) {
+.mochi-container {
+  flex-direction: column;
+}
+
+.mochi-container  img {
+  min-width: 13rem;
+  max-width: 13rem;
+  height: 13rem;
+  align-self: center;
+
+}
+
+.header > h1 {
+  font-size: 2.6rem;
+}
+
+.menu-container > p {
+  width: 85%;
+}
+}
+
+@media all and (max-width: 32em) {
+  html {
+    font-size: 70%;
+  }
 }
