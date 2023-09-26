@@ -32,8 +32,8 @@ const mochiData = [
     ingredients: 'Soft mochi rice dough with fresh mango and cream',
     price: 7,
     image: 'mochi/Mochi mango.jpg',
-    soldOut: false,
-    inStock: 17,
+    soldOut: true,
+    inStock: 0,
   },
   {
     name: 'Orange Daifuku Mochi',
@@ -101,7 +101,7 @@ return (
 
 function Mochi({mochiObj}) {
 return (
-  <li className='mochi-container'>
+  <li className={`mochi-container ${mochiObj.soldOut ? 'sold-out' : ''}`}>
 <img src={mochiObj.image} alt={mochiObj.name} />
 <div className='mochi-details-box'>
   <h3>{mochiObj.name}</h3>
@@ -135,9 +135,9 @@ function Footer() {
 
 function Order({closeHour, openHour}) {
 return (
-  <div>
+  <div className='order-container'>
   <p>We're are open from {openHour}:00 to {closeHour}:00. Come visit us or order online.</p>
-  <button>Order</button>
+  <button className='btn'>Order</button>
   </div>
 )
 }
